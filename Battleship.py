@@ -1,27 +1,27 @@
 import random
 
 
-class Vessel:
-    def __init__(self, name, capacity, length, type):
-        self.name = name  # Nom du navire
-        self.capacity = capacity  # nombre maximum de passager
-        self.length = length  # Taille du vaisseau en mètres
-        self.type = type  # types de vaiseau ( refueling, mechanical assistance and cargo)
+# class Vessel:
+#     def __init__(self, name, capacity, length, type):
+#         self.name = name  # Nom du navire
+#         self.capacity = capacity  # nombre maximum de passager
+#         self.length = length  # Taille du vaisseau en mètres
+#         self.type = type  # types de vaiseau ( refueling, mechanical assistance and cargo)
 
-    def __str__(self):
-        return f"{self.name} ({self.type}) - Capacity: {self.capacity}, Length: {self.length}m"
+#     def __str__(self):
+#         return f"{self.name} ({self.type}) - Capacity: {self.capacity}, Length: {self.length}m"
 
 
-class Fleet:
-    def __init__(self):
-        self.vessels = []
+# class Fleet:
+#     def __init__(self):
+#         self.vessels = []
 
-    def add_vessel(self, vessel):
-        self.vessels.append(vessel)
+#     def add_vessel(self, vessel):
+#         self.vessels.append(vessel)
 
-    def list_vessels(self):
-        for vessel in self.vessels:
-            print(vessel)
+#     def list_vessels(self):
+#         for vessel in self.vessels:
+#             print(vessel)
 
 
 # Example usage:
@@ -39,6 +39,74 @@ class Fleet:
 #     # Lister les vaisseaux de la flotte
 #     print("Fleet:")
 #     fleet.list_vessels()
+
+class Vessel:
+    def __init__(self, name, vessel_type, medical_unit=True):
+        self.name = name
+        self.vessel_type = vessel_type
+        self.medical_unit = medical_unit
+        self.x = None
+        self.y = None
+        self.shield_up = False
+
+    def move(self, x, y):
+        self.x = x
+        self.y = y
+
+    def raise_shield(self):
+        self.shield_up = True
+
+    def lower_shield(self):
+        self.shield_up = False
+
+class SupportCraft(Vessel):
+    def __init__(self, name, support_type, medical_unit=True):
+        super().__init__(name, "Support", medical_unit)
+        self.support_type = support_type
+
+class OffensiveCraft(Vessel):
+    def __init__(self, name, offensive_type, cannon_count):
+        super().__init__(name, "Offensive")
+        self.offensive_type = offensive_type
+        self.cannon_count = cannon_count
+
+class CommandShip(OffensiveCraft):
+    def __init__(self, name):
+        super().__init__(name, "Battleship", 24)
+
+class Fleet:
+    def __init__(self):
+        self.vessels = []
+
+    def add_vessel(self, vessel):
+        self.vessels.append(vessel)
+
+    def list_vessels(self):
+        for vessel in self.vessels:
+            print(vessel.name, " - Type:", vessel.vessel_type)
+
+# Exemple d'utilisation :
+
+if __name__ == "__main__":
+    fleet = Fleet()
+
+    # ajout des support craft
+    fleet.add_vessel(SupportCraft("Refueling Ship 1", "Refueling"))
+    fleet.add_vessel(SupportCraft("Mechanical Assistance Ship 1", "Mechanical Assistance"))
+    fleet.add_vessel(SupportCraft("Cargo Ship 1", "Cargo"))
+
+    # ajout des offensive craft
+    fleet.add_vessel(OffensiveCraft("Battleship 1", "Battleship", 24))
+    fleet.add_vessel(OffensiveCraft("Cruiser 1", "Cruiser", 6))
+    fleet.add_vessel(OffensiveCraft("Destroyer 1", "Destroyer", 12))
+
+    # ajout des command ship
+    fleet.add_vessel(CommandShip("Command Ship 1"))
+
+    # Lister les vaisserau de la flottes
+    print("Fleet:")
+    fleet.list_vessels()
+
 
 
 
