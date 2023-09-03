@@ -6,7 +6,7 @@ class Vessel:
         self.name = name  # Nom du navire
         self.capacity = capacity  # nombre maximum de passager
         self.length = length  # Taille du vaisseau en mètres
-        self.type = type  # types de vaiseau ( 'Ferry', 'Cargo', 'Pétrolier', etc.)
+        self.type = type  # types de vaiseau ( refueling, mechanical assistance and cargo)
 
     def __str__(self):
         return f"{self.name} ({self.type}) - Capacity: {self.capacity}, Length: {self.length}m"
@@ -29,10 +29,12 @@ class Fleet:
 #     fleet = Fleet()
 
 #     # ajouter les vaisseaux à la flotte
-#     vessel1 = Vessel("Ferry 1", 200, 50, "Ferry")
-#     vessel2 = Vessel("Cargo", 5000, 150, "Cargo")
+#     vessel1 = Vessel("mechanical 1", 200, 50, "mechanical")
+#     vessel2 = Vessel("refueling", 5000, 150, "refueling")
+#     vessel3 = Vessel("cargo", 300, 250, "cargo")
 #     fleet.add_vessel(vessel1)
 #     fleet.add_vessel(vessel2)
+#     fleet.add_vessel(vessel3)
 
 #     # Lister les vaisseaux de la flotte
 #     print("Fleet:")
