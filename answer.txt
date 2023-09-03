@@ -1,0 +1,20 @@
+1. Quelle est la complexité de votre algorithme (en notation grand O) ?
+     L'algorithme dans son ensemble reste linéaire par rapport au nombre total de navires dans la flotte, soit une complexité en O(N). 
+     Cela signifie que la performance de l'algorithme ne devrait pas être significativement affectée par le nombre de navires 
+     tant qu'il reste relativement petit.
+
+
+2. Comment amélioreriez-vous votre algorithme ?
+    -Optimisation de la recherche de position
+    -Utilisation d'une structure de données pour le suivi des paires
+    
+
+
+
+3. Comment adapteriez-vous votre algorithme à trois dimensions ? Comment cela affecterait-il
+la complexité?
+    -Utiliser une grille 3D
+    -Déplacer des navires en 3D
+    -Générer des paires en 3D
+    -Vérification de la validité en 3D
+
